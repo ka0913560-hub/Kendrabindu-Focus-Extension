@@ -35,7 +35,22 @@ A smart Chrome extension built for **Code Veda Hackathon 2025** to help users st
 ### Blocked Website Page
 ![Blocked Website](blocked-screenshot.png.jpeg)
 
+---
+
+## 🚀 Future Ideas
+- Cross-browser support (Firefox/Edge)  
+- Mobile companion app / scheduled focus windows  
+- Premium analytics (time saved, weekly reports)
+
+---
+
+## 👥 Team
+Built with ❤️ by:
+- **Pawni** – Problem & Pitch  
+- **Pratyaksh** – Solution & Tech Stack  
+- **Khush** – Impact, Business Model & Closing
 
 
 
-## 🧩 File Structure (recommended)
+
+
