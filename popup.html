@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 400px;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: black;
+            margin: 0;
+            background: linear-gradient(135deg, #0caa34 0%, #d2d823 100%);
+            color: white;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 300;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .list-container {
+            max-height: 150px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            font-size: 13px;
+            word-break: break-all;
+        }
+        
+        .list-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .remove-btn {
+            padding: 4px 8px;
+            font-size: 12px;
+            background: rgba(255, 82, 82, 0.8);
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+        
+        .remove-btn:hover {
+            background: rgba(255, 82, 82, 1);
+        }
+        
+        .stats {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .empty-state {
+            text-align: center;
+            opacity: 0.6;
+            font-size: 13px;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .mode-toggle {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .mode-toggle label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+        }
+        
+        .mode-toggle label:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mode-toggle label:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mode-toggle input[type="radio"] {
+            margin-right: 8px;
+        }
+        
+        .status-message {
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            text-align: center;
+        }
+        
+        .success {
+            background: rgba(76, 175, 80, 0.3);
+        }
+        
+        .error {
+            background: rgba(244, 67, 54, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Kendra Bindu</h1>
+        
+        <div id="statusMessage" class="status-message" style="display: none;"></div>
+        
+        <div class="section">
+            <h3>🚫 Block URLs</h3>
+            <div class="input-group">
+                <input type="text" id="urlInput" placeholder="Enter URL to block (e.g., example.com)">
+                <button id="addUrl">Add</button>
+            </div>
+            <div id="urlList" class="list-container"></div>
+        </div>
+        
+        <div class="section">
+            <h3>📺 YouTube Keywords</h3>
+            <div class="mode-toggle">
+                <label>
+                    <input type="radio" name="keywordMode" value="block" id="blockMode" checked>
+                    🚫 Block content with these keywords
+                </label>
+                <label>
+                    <input type="radio" name="keywordMode" value="allow" id="allowMode">
+                    ✅ Show ONLY content with these keywords
+                </label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="keywordInput" placeholder="Enter keyword (e.g., politics)">
+                <button id="addKeyword">Add</button>
+            </div>
+            <div id="keywordList" class="list-container"></div>
+        </div>
+        
+        <div class="stats">
+            <div id="stats"></div>
+            <div>made by - Team Nirvan</div>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
