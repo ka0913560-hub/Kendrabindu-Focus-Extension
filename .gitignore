@@ -1,0 +1,20 @@
+# Ignore Chrome metadata and generated rule sets
+_metadata/
+generated_indexed_rulesets/
+
+# Build or package outputs
+*.crx
+*.zip
+dist/
+build/
+
+# Node modules (if added later)
+node_modules/
+
+# Logs
+*.log
+
+# Editor/OS files
+.vscode/
+.DS_Store
+Thumbs.db
