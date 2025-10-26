@@ -94,7 +94,7 @@ Blocked Site (-30 pts)  →   Focus Level Updates   ←    Focus Mode ON (+15 pt
 ### 🔹 Full Extension Preview
 Here’s a live look at **KendraBindu 2.0** — showing the Mind Focus Rings, URL Blocker, YouTube Filter, Theme Settings, and Screen Time Tracker — all in one view:
 
-![KendraBindu Screenshot](assets/ss.png)
+![KendraBindu Screenshot](ss.png)
 
 ---
 ### Bindu Visualization Active
